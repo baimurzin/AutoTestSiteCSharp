@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyUnitTest17
+namespace MyUnitTest17.Data
 {
-    public class Account
+    public class LoginData
     {
-        public Account(string login, string pass)
+        public LoginData(string login, string pass)
         {
             this.Username = login;
             this.Password = pass;

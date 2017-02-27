@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.1.0\lib\net40\WebDriver.dll</HintPath>
       <Private>True</Private>
@@ -63,19 +64,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="Auth.cs" />
-    <Compile Include="Configuration.cs" />
-    <Compile Include="DTO\FragmentDTO.cs" />
-    <Compile Include="DTO\ProfileEditDTO.cs" />
-    <Compile Include="FragmentTest.cs" />
+    <Compile Include="ApplicationManager.cs" />
+    <Compile Include="Data\FragmentCreateData.cs" />
+    <Compile Include="Data\LoginData.cs" />
+    <Compile Include="Data\ProfileEditData.cs" />
+    <Compile Include="FragmentHelper.cs" />
+    <Compile Include="HelperBase.cs" />
+    <Compile Include="LoginHelper.cs" />
+    <Compile Include="NavigationHelper.cs" />
     <Compile Include="NUnitTest.cs" />
-    <Compile Include="ProfileTest.cs" />
+    <Compile Include="ProfileHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Settings.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

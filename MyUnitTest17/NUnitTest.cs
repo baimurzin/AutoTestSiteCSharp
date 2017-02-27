@@ -6,7 +6,8 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
-using MyUnitTest17.DTO;
+using MyUnitTest17.Data;
+
 
 namespace MyUnitTest17
 {
@@ -14,49 +15,32 @@ namespace MyUnitTest17
     public class NUnitTest : TestBase
     {
 
-        private ConfigurationContext c = ConfigurationContext.ContextInstance;
-
+        
         [Test]
         public void TestSite()
         {
-            OpenHomePage();
-            authTest.OpenLoginPage();
-            LoginTest();
-            fragmentTest.OpenNewFragmentPageCreation();
-            MakeNewFragment();
-            //profileTest.OpenProfileSettingPage();
-           // EditProfileTest();
+            application.navigation.OpenHomePage();
         }
 
-        private void OpenHomePage()
+        [Test]
+        public void EditProfile()
         {
-            c.driver.Navigate().GoToUrl(c.baseURL);
+            application.navigation.OpenProfileSettingPage();
+            ProfileEditData profile = new ProfileEditData();
+            profile.NickName = "new123";
+            profile.About = "Tester1";
+            application.profile.EditProfile(profile);
         }
 
-        public void LoginTest()
+        [Test]
+        public void PostFragment()
         {
-            Account acc = new Account("testitis@yopmail.com", "12345678");
-            authTest.Login(acc);
-            WaitAndVisible(c.driver, By.Id("countdown_allowed"));
+            application.navigation.OpenNewFragmentPageCreation();
+            FragmentCreateData fragment = new FragmentCreateData();
+            fragment.Mood = FragmentCreateData.MoodField.M_2;
+            fragment.Visible = FragmentCreateData.VisibleField.Best;
+            fragment.Text = "New Fragment";
+            application.fragment.PostNewFragment(fragment);
         }
-
-        public void EditProfileTest()
-        {
-            ProfileEditDTO profileDTO = new ProfileEditDTO();
-            profileDTO.NickName = "Tester <script> alert('test'); </script>";
-            profileDTO.About = "Tester was here <script> alert('test'); </script>";
-            profileTest.EditProfile(profileDTO);
-        }
-
-        public void MakeNewFragment()
-        {
-            FragmentDTO fragment = new FragmentDTO();
-            fragment.Text = "NEW FRAGMENT!!!";
-            fragment.Visible = MyUnitTest17.DTO.FragmentDTO.VisibleField.No;
-            fragment.Mood = FragmentDTO.MoodField.M_1;
-            fragmentTest.OpenNewFragmentPageCreation();
-            fragmentTest.PostNewFragment(fragment);
-        }
-        
     }
 }
