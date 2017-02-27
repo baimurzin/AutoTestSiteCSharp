@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <Login>testitis@yopmail.com</Login>
+  <Password>12345678</Password>
+  <BaseURL>http://fragmenter.net</BaseURL>
+</Config>
